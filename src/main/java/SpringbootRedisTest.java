@@ -1,17 +1,17 @@
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.hzbank.pojo.Student;
 import org.apache.commons.beanutils.BeanUtils;
 import org.junit.Test;
-import pojo.Person;
-import pojo.User;
+import com.hzbank.pojo.Person;
+import com.hzbank.pojo.User;
 
-import javax.swing.text.DateFormatter;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Description
@@ -20,7 +20,7 @@ import java.util.List;
  * @Description: test
  * @Version 1.0.0
  */
-public class test {
+public class SpringbootRedisTest {
 
 
     public static Date transferString2Date(String s) {
@@ -53,6 +53,12 @@ public class test {
 //                return null;
             }
         }
+        String str = "{'name':'name0','age':''}";
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.getAsJsonObject();
+        Gson gson = new Gson();
+        Person person = gson.fromJson(str, Person.class);
+        System.out.println(person.toString());
 
 
     }
@@ -79,6 +85,24 @@ public class test {
             System.out.println("打印s" + s);
         }
 
+
+    }
+
+
+    @Test
+    public void test3(){
+        List<Student> list = new ArrayList<>();
+        Student s1 = new Student("a", 11, new Date(2020, 1, 1));
+        Student s2 = new Student("b", 12, new Date(2020, 1, 2));
+        Student s3 = new Student("c", 13, null);
+        Student s4 = new Student("d", 13, null);
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+        list.add(s4);
+
+        list = list.stream().sorted(Comparator.comparing(Student::getDate,Comparator.nullsLast(Comparator.reverseOrder()))).collect(Collectors.toList());
+        System.out.println(list);
 
     }
 

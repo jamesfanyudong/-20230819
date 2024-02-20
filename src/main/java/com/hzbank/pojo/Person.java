@@ -1,6 +1,8 @@
-package pojo;
+package com.hzbank.pojo;
 
 import lombok.Data;
+
+import java.math.BigDecimal;
 
 /**
  * @Description
@@ -11,12 +13,12 @@ import lombok.Data;
  */
 @Data
 public class Person {
-    private int age;
+    private BigDecimal age;
     private String name;
     public Person(){
 
     }
-    public Person(int age,String name){
+    public Person(BigDecimal age,String name){
         this.age = age;
         this.name = name;
     }

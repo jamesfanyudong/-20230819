@@ -9,7 +9,7 @@ import org.junit.Test;
  * @Description: test1
  * @Version 1.0.0
  */
-public class test1 {
+public class springbootRedisTest1 {
 
 
     @Test
